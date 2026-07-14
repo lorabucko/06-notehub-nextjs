@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, keepPreviousData } from '@tanstack/react-query'
 import { useDebouncedCallback } from 'use-debounce'
 import { fetchNotes } from '../../lib/api'
 import css from './NotesPage.module.css'
@@ -46,6 +46,7 @@ export default function NotesClient({
         search: debouncedSearch || undefined,
       }),
     refetchOnMount: false,
+    placeholderData: keepPreviousData,
   })
 
   return (
